@@ -1,0 +1,21 @@
+[font]
+family = "FiraCode Nerd Font"
+
+[window]
+padding-x = 5
+padding-y = 5
+background-opacity = 1.0
+background-blur = 10
+
+[theme]
+name = "CutiePro"
+
+[shell]
+integration-features = ["no-cursor"]
+
+[cursor]
+style = "block"
+blink = false
+
+[performance]
+max-frame-rate = 144

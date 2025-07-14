@@ -1,0 +1,41 @@
+live_config_reload = true
+
+[font]
+size = 12
+
+[font.normal]
+family = "IosevkaTerm NF"
+
+[font.offset]
+x = 0
+y = 0
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "Return"
+mods = "Control|Shift"
+
+[scrolling]
+history = 5000
+multiplier = 10
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[window]
+opacity = 0.9
+
+[window.padding]
+x = 10
+y = 10

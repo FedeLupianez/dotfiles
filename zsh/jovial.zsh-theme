@@ -74,10 +74,10 @@ typeset -gA JOVIAL_SYMBOL=(
 
     ## preset arrows
     # arrow '─>'
-    # arrow '─▶'
-    arrow '─➤'
-    arrow.git-clean '─➤'
-    arrow.git-dirty '─➤'
+    arrow '─▶'
+    # arrow '─➤'
+    arrow.git-clean '─▶'
+    arrow.git-dirty '─▶'
 )
 
 

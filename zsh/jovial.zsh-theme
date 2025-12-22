@@ -69,15 +69,15 @@ typeset -gA JOVIAL_SYMBOL=(
     corner.top    '╭─'
     corner.bottom '╰─'
 
-    git.dirty '✘✘✘'
-    git.clean '✔'
+    git.dirty ' ●'
+    git.clean ' ●'
 
     ## preset arrows
     # arrow '─>'
-    arrow '─▶'
-    # arrow '─➤'
-    arrow.git-clean '─▶'
-    arrow.git-dirty '─▶'
+    # arrow '─▶'
+    arrow '─➤'
+    arrow.git-clean '─➤'
+    arrow.git-dirty '─➤'
 )
 
 
@@ -148,10 +148,10 @@ typeset -gA JOVIAL_PALETTE=(
     path '%B%F{203}'          # beige claro (strings)
 
     # git status info (dirty or clean / rebase / merge / cherry-pick)
-    git '%F{110}'             # azul grisáceo (hints)
+    git '%F{203}'             # azul grisáceo (hints)
 
     # virtual env activate prompt for python
-    venv '%F{110}'            # similar a hint o comentarios
+    venv '%B%F{203}'            # similar a hint o comentarios
 
     # current time when prompt render, pin at end-of-line
     time '%F{245}'            # gris medio
@@ -164,7 +164,7 @@ typeset -gA JOVIAL_PALETTE=(
     exit.code '%B%F{203}'     # rojo pálido (error)
 
     # 'conj.': short for 'conjunction', like as, at, in, on, using
-    conj. '%F{102}'           # verde apagado
+    conj. '%F{240}'           # Gris oscuro
 
     # shell typing area pointer
     typing '%F{252}'          # blanco sucio
@@ -767,16 +767,16 @@ typeset -gA jovial_affix_lengths=()
     local python_prompt_prefix="${JOVIAL_PALETTE[conj.]}using "
 
     if [[ -n ${VIRTUAL_ENV} ]] && @jov.rev-parse-find "venv"; then
-        local python_prompt="%F{123}`$(@jov.rev-parse-find venv '' true)/venv/bin/python --version 2>&1`"
+        local python_prompt="%B%F{203}`$(@jov.rev-parse-find venv '' true)/venv/bin/python --version 2>&1`"
         echo "${python_prompt_prefix}${python_prompt}"
         return 0
     fi
 
     if @jov.rev-parse-find "requirements.txt"; then
         if @jov.iscommand python; then
-            local python_prompt="%F{123}`\python --version 2>&1`"
+            local python_prompt="%B%F{203}`\python --version 2>&1`"
         elif @jov.iscommand python3; then
-            local python_prompt="%F{123}`\python3 --version 2>&1`"
+            local python_prompt="%B%F{203}`\python3 --version 2>&1`"
         else
             python_prompt_prefix="${JOVIAL_PALETTE[normal]}[${JOVIAL_PALETTE[error]}need "
             local python_prompt="Python${JOVIAL_PALETTE[normal]}]"

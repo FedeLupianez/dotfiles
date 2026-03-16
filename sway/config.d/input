@@ -1,0 +1,28 @@
+### Input configuration
+#
+# Read `man 5 sway-input` for more information about this section.
+
+input * {
+    xkb_layout latam
+    xkb_variant deadtilde
+    xkb_options caps:escape
+    pointer_accel -0.5
+}
+
+bindgesture {
+    swipe:right workspace prev
+    swipe:left exec ~/.config/sway/scripts/advance_workspace.sh
+    swipe:up move scratchpad
+    swipe:down scratchpad show
+}
+seat * hide_cursor 2000
+
+# Enable numlock by default
+input type:keyboard xkb_numlock disabled
+
+# Set keyboard layout and variant based on current system settings
+exec_always {
+    'swaymsg input type:keyboard xkb_layout "$(localectl status | grep "X11 Layout" | sed -e "s/^.*X11 Layout://")"'
+    'swaymsg input type:keyboard xkb_variant "$(localectl status | grep "X11 Variant" | sed -e "s/^.*X11 Variant://")"'
+}
+

@@ -1,1 +1,0 @@
-/home/fede/.oh-my-zsh/themes/jovial.zsh-theme

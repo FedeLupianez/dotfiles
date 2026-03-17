@@ -33,7 +33,7 @@ window#waybar.empty #window {
     padding: 5px;
     margin: 3px 0px;
     border-radius: 15px;
-    background-color: #2e2e2f;
+    background-color: #2A2A2A;
     opacity: 1;
 }
 
@@ -174,7 +174,7 @@ tooltip label {
 #right1 {
     margin: 2px 0px;
     font-weight: 800;
-    background: #2e2e2f;
+    background: #2A2A2A;
     padding: 0px 6px;
     border-radius: 99px;
 }
@@ -183,8 +183,6 @@ tooltip label {
 #custom-media {
     margin: 2px 0px;
     padding: 0px 6px;
-    border-radius: 99px;
-    background: #2e2e2f;
     font-size: 12px;
 }
 
@@ -192,6 +190,6 @@ tooltip label {
     margin: 2px 0px;
     padding: 0px 6px;
     border-radius: 99px;
-    background: #2e2e2f;
+    background: #2A2A2A;
     font-size: 12px;
 }

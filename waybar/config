@@ -15,30 +15,18 @@
   ],
 
 // GROUPS MODULE
-
-  "group/center2": {
-	"orientation": "inherit",
-	"modules": [
-    "custom/idle-indicator",
-    "custom/notification-silencing-indicator",
-    "custom/screenrecording-indicator", 
-    "custom/update", 
-	]
-},
-
-
   "group/right1": {
-	"orientation": "inherit",
-	"modules": [
-    "custom/media", 
-    "tray",
-    "custom/separator#blank",
-    "custom/separator#blank",
-    "pulseaudio",
-    "bluetooth",
-    "network",
-	]
-},
+        "orientation": "inherit",
+        "modules": [
+        "custom/media", 
+        "tray",
+        "custom/separator#blank",
+        "custom/separator#blank",
+        "pulseaudio",
+        "bluetooth",
+        "network",
+        ]
+    },
 
 // MODULES
 
@@ -73,7 +61,7 @@
 },
 
 "clock": {
-    "format": " {:%I:%M %p • %a, %d/%m}     ",
+    "format": " {:%H:%M • %d/%m}  ",
     "format-alt": "{:%A, %d %B %Y}   ",
     "tooltip": false,
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
@@ -108,7 +96,7 @@
     "on-click-right": "pamixer -t",
     "tooltip-format": "{volume}%",
     "scroll-step": 5,
-    "format-muted": "",
+    "format-muted": " ",
     "format-icons": {
       "default": [
         " ",

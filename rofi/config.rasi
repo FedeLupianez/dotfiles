@@ -166,4 +166,4 @@ configuration {
       sorting-method:    "name";
   }
 }
-@theme "/usr/share/rofi/themes/rounded-red-dark.rasi"
+@theme "./themes/rounded-gray-dark.rasi"

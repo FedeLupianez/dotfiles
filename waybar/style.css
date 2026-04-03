@@ -3,7 +3,7 @@
     border: none;
     border-radius: 1;
     min-height: 0;
-    font-family: 'JetBrainsMono Nerd Font Propo';
+    font-family: 'JetBrainsMono';
     font-size: 12px;
     transition: none;
 }
@@ -31,7 +31,7 @@ window#waybar.empty #window {
 
 #workspaces {
     padding: 5px;
-    margin: 3px 0px;
+    margin: 2px 0px;
     border-radius: 15px;
     background-color: #2A2A2A;
     opacity: 1;

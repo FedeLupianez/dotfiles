@@ -11,7 +11,7 @@ set {
     $right l
 
     # Default terminal emulator
-    $term foot
+    $term footclient
 
     # Application launcher
     $launcher rofi -show drun

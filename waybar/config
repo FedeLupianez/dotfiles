@@ -34,8 +34,8 @@
 	  "on-click": "activate",
         "format": "{icon}",
         "format-icons": {
-          "default": "",
-          "active": "",
+          "default": "●",
+          "active": "●",
           "urgent": "",
           "empty": "",
         },

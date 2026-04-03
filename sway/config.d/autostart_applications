@@ -32,6 +32,9 @@ exec kanshi
 # swayrd
 exec_always swayrd
 
+# foot server
+exec_always foot --server
+
 # Sway Fader
 # exec python3 ~/.config/sway/scripts/swayfader.py
 

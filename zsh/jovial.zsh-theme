@@ -69,8 +69,8 @@ typeset -gA JOVIAL_SYMBOL=(
     corner.top    '╭─'
     corner.bottom '╰─'
 
-    git.dirty ' ⊚'
-    git.clean ' ⊚'
+    git.dirty ' ●'
+    git.clean ' ●'
 
     ## preset arrows
     # arrow '─>'

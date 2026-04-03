@@ -15,7 +15,7 @@ set $up k
 set $right l
 
 # Terminal
-set $term foot
+set $term footclient
 set $menu dmenu_path | wmenu | xargs swaymsg exec --
 
 include /etc/sway/config-vars.d/*

@@ -217,10 +217,34 @@ alias enable_bluetooth="sudo systemctl enable bluetooth.service"
 alias enable_cups="sudo systemctl enable cups.service & sudo systemctl enable cups.socket"
 alias enable_avahi="sudo systemctl enable avahi-daemon.service & sudo systemctl enable avahi-daemon.socket"
 
-alias rm_horphans="sudo pacman -Rns $(pacman -Qtdq)"
+alias rm_horphans="sudo pacman -Rs $(pacman -Qtdq)"
 
-alias git_ssh_school="git remote set-url origin git@github-school:LupFede/"
-alias git_ssh_work="git remote set-url origin git@github-work:FedeLupianez/"
+alias git_ssh_school="git remote set-url origin git@github_school:LupFede/"
+alias git_ssh_work="git remote set-url origin git@github_work:FedeLupianez/"
+
+function db_school() {
+    ssh -L 3307:127.0.0.1:3306 alumno6to@ismdf.dynv6.net -N &
+    local ssh_pid=$!
+    trap "kill $ssh_pid 2>/dev/null" EXIT
+    sleep 1
+    mycli --defaults-group-suffix=_school
+}
+
+function db_ssh(){
+    local profile="${1:-dev}"
+    local local_port="${2:-3307}"
+    . ~/.config/db_ssh_config.sh
+    eval "remote_host=\$profile_${profile}_host"
+    eval "remote_port=\$profile_${profile}_port"
+    eval "ssh_user=\$profile_${profile}_user"
+    eval "mycli_profile=\$profile_${profile}_mycli"
+
+    ssh -L "$local_port:127.0.0.1:$remote_port" "$ssh_user@$remote_host" -N &
+    local ssh_pid=$!
+    trap "kill $ssh_pid 2>/dev/null" EXIT
+    sleep 1
+    mycli --defaults-group-suffix="$mycli_profile"
+}
 
 eval "$(dircolors ~/.dir_colors)"
 eval "$(zoxide init zsh)"
@@ -228,3 +252,12 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=gray"
 
 # opencode
 export PATH=/home/fede/.opencode/bin:$PATH
+
+. "$HOME/.local/bin/env"
+
+# bun completions
+[ -s "/home/fede/.bun/_bun" ] && source "/home/fede/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

@@ -34,10 +34,11 @@
 	  "on-click": "activate",
         "format": "{icon}",
         "format-icons": {
-          "default": "●",
-          "active": "●",
+          "default": "",
+          "active": "",
           "urgent": "",
           "empty": "",
+            "focused":""
         },
       "persistent-workspaces": {
       "1": [],
@@ -50,14 +51,14 @@
     "interval": 5,
     "format": "{icon} ",
     "format-icons": ["󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥"],
-    "on-click": "foot btop"
+    "on-click": "/usr/bin/foot btop"
     },
 
 "memory": {
   "interval": 5,
   "format": "{icon} ",
   "format-icons": ["󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥"],
-  "on-click": "foot btop"
+  "on-click": "/usr/bin/foot btop"
 },
 
 "clock": {
@@ -78,7 +79,7 @@
     "tooltip-format-disconnected": "Disconnected",
     "interval": 10,
     "spacing": 1,
-    "on-click": "nmtui"
+    "on-click": "/usr/bin/foot nmtui"
   },
 
   "bluetooth": {
@@ -92,16 +93,16 @@
 
   "pulseaudio": {
     "format": "<span size='11500'>{icon}</span>",
-    "on-click": "omarchy-launch-or-focus-tui wiremix",
-    "on-click-right": "pamixer -t",
+    "on-click": "/usr/bin/foot wiremix",
+    "on-click-right": "/usr/bin/foot pamixer -t",
     "tooltip-format": "{volume}%",
     "scroll-step": 5,
     "format-muted": " ",
     "format-icons": {
       "default": [
-        " ",
-        " ",
-        " "
+        "",
+        "",
+        ""
       ]
     }
   },

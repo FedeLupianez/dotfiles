@@ -1,9 +1,12 @@
+@define-color dark-gray #2A2A2A;
+@define-color light-gray #2e2e2e;
+
 * {
     color: white;
     border: none;
     border-radius: 1;
     min-height: 0;
-    font-family: 'JetBrainsMono';
+    font-family: 'Monaspace Neon NF';
     font-size: 12px;
     transition: none;
 }
@@ -11,8 +14,10 @@
 
 
 window#waybar {
-    /* background-color: alpha(#2e2e2f, 0.7); */
+    /* background-color: alpha(#2e2e2e, 0.7); */
     background-color: transparent;
+    border-radius: 18px;
+    padding: 0;
 }
 
 window#waybar.empty #window {
@@ -33,7 +38,7 @@ window#waybar.empty #window {
     padding: 5px;
     margin: 2px 0px;
     border-radius: 15px;
-    background-color: #2A2A2A;
+    background-color: @dark-gray;
     opacity: 1;
 }
 
@@ -116,7 +121,7 @@ window#waybar.empty #window {
 }
 
 tooltip {
-    background: #2e2e2f;
+    background: @dark-gray;
     border: 1px solid alpha(white, 0.2);
     border-radius: 4px 4px 11px 11px;
 }
@@ -129,7 +134,7 @@ tooltip label {
 #custom-active_window {
     padding: 0px 6px;
     border-radius: 14px;
-    background: #2e2e2f;
+    background: @dark-gray;
     font-size: 12px;
 }
 
@@ -174,7 +179,7 @@ tooltip label {
 #right1 {
     margin: 2px 0px;
     font-weight: 800;
-    background: #2A2A2A;
+    background: @dark-gray;
     padding: 0px 6px;
     border-radius: 99px;
 }
@@ -190,6 +195,6 @@ tooltip label {
     margin: 2px 0px;
     padding: 0px 6px;
     border-radius: 99px;
-    background: #2A2A2A;
+    background: @dark-gray;
     font-size: 12px;
 }

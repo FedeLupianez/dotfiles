@@ -14,7 +14,7 @@ set {
     $term footclient
 
     # Application launcher
-    $launcher rofi -show drun
+    $launcher rofi -show drun -show-icons
 
     # Power Menu
     $powermenu ~/.config/sway/scripts/power_menu.sh

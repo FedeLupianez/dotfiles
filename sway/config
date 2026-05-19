@@ -4,4 +4,4 @@
 
 # user config directory
 include $HOME/.config/sway/config.d/*
-exec_always swaybg -i /home/fede/dotfiles/wallpapers/blackfire.jpg -m fill
+exec_always swaybg -i /home/fede/dotfiles/wallpapers/dark_clouds.png -m fill

@@ -8,10 +8,10 @@
   "margin-right": 10,
   "margin-left": 10,
   "margin-top": 2,
-  "modules-left": ["clock", "cpu", "memory"],
-  "modules-center": ["sway/workspaces", "group/center2" ],
+  "modules-left": ["battery", "clock", "cpu", "memory"],
+  "modules-center": ["hyprland/workspaces"],
   "modules-right": [
-    "group/right1",
+    "group/right1"
   ],
 
 // GROUPS MODULE
@@ -25,12 +25,13 @@
         "pulseaudio",
         "bluetooth",
         "network",
+        "backlight"
         ]
     },
 
 // MODULES
 
-  "sway/workspaces": {
+  "hyprland/workspaces": {
 	  "on-click": "activate",
         "format": "{icon}",
         "format-icons": {
@@ -43,8 +44,8 @@
       "persistent-workspaces": {
       "1": [],
       "2": [],
-      "3": [],
-    },
+      "3": []
+    }
 	},
 
     "cpu": {
@@ -89,6 +90,23 @@
     "format-no-controller": "",
     "tooltip-format": "Devices connected: {num_connections}",
     "on-click": "omarchy-launch-bluetooth"
+  },
+
+  "backlight": {
+    "device": "amdgpu_bl1",
+    "format": "<span size='11500'>{icon}</span> {percent}%",
+    "format-icons": ["󰃞", "󰃝", "󰃟", "󰃠"],
+    "on-scroll-up": "brightnessctl s +5%",
+    "on-scroll-down": "brightnessctl s 5%-"
+  },
+
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": ["󰂃", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": " {capacity}%",
+    "tooltip-format": "Battery: {capacity}%\nStatus: {status}\nTime: {timeToEmpty} / {timeToFull}",
+    "interval": 30
   },
 
   "pulseaudio": {
@@ -149,5 +167,5 @@
     "exec": "$OMARCHY_PATH/default/waybar/indicators/idle.sh",
     "signal": 9,
     "return-type": "json"
-  },
+  }
 }

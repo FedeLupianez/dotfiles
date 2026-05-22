@@ -81,12 +81,18 @@ window#waybar.empty #window {
     padding-left: 5px;
 }
 
-#battery,
+#backlight,
 #pulseaudio,
 #custom-screenrecording-indicator,
 #custom-update {
     min-width: 12px;
     margin: 0 7.5px;
+}
+
+#battery {
+    font-size: 14px;
+    padding: 0 6px;
+    margin: 0 2px;
 }
 
 #tray {

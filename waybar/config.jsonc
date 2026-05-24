@@ -8,7 +8,7 @@
   "margin-right": 10,
   "margin-left": 10,
   "margin-top": 2,
-  "modules-left": ["battery", "clock", "cpu", "memory"],
+  "modules-left": ["clock", "cpu", "memory", "battery"],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
     "group/right1"
@@ -94,18 +94,18 @@
 
   "backlight": {
     "device": "amdgpu_bl1",
-    "format": "<span size='11500'>{icon}</span> {percent}%",
+    "format": "{icon} {percent}%",
     "format-icons": ["󰃞", "󰃝", "󰃟", "󰃠"],
     "on-scroll-up": "brightnessctl s +5%",
     "on-scroll-down": "brightnessctl s 5%-"
   },
 
   "battery": {
+    "bat": "BAT0",
     "format": "{icon} {capacity}%",
     "format-icons": ["󰂃", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
     "format-charging": "󰂄 {capacity}%",
-    "format-plugged": " {capacity}%",
-    "tooltip-format": "Battery: {capacity}%\nStatus: {status}\nTime: {timeToEmpty} / {timeToFull}",
+    "format-not-charging": " {capacity}%",
     "interval": 30
   },
 

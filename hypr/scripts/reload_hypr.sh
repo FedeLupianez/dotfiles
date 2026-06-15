@@ -1,3 +1,3 @@
 #!/bin/bash
 hyprctl reload
-pkill waybar && waybar &
+dms kill && dms run

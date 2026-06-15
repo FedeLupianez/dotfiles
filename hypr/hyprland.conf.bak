@@ -1,0 +1,69 @@
+source = colors.conf
+
+### MONITORS ###
+monitor = eDP-1, 1920x1080@60, 0x0, 1
+
+### MY PROGRAMS ###
+$terminal = foot
+$fileManager = nautilus
+$menu = rofi -show drun
+
+### AUTOSTART ###
+exec-once = nm-applet
+exec-once = waybar
+exec-once = blueman-applet
+exec-once = swaync
+exec-once = systemctl --user start hyprpolkitagent
+exec-once = hypridle
+exec-once = sh -c "sleep 1 && hyprpaper"
+
+
+### ENVIRONMENT VARIABLES ###
+env = XCURSOR_SIZE,24
+env = HYPRCURSOR_SIZE,24
+
+
+### LOOK AND FEEL ###
+source = ~/.config/hypr/configs/looknfeel.conf
+
+### ANIMATIONS ###
+source = ~/.config/hypr/configs/UserAnimations.conf
+
+### WINDOWRULES AND LAYERRULES ###
+source = ~/.config/hypr/configs/windowrules.conf
+
+### LAYOUTS ###
+dwindle {
+    preserve_split = true
+}
+
+master {
+    new_status = master
+}
+
+
+### ECOSYSTEM ###
+ecosystem {
+    no_donation_nag = true
+}
+
+### MISC ###
+misc {
+    force_default_wallpaper = 0
+    disable_hyprland_logo = true
+}
+
+render {
+    new_render_scheduling = true
+}
+
+### CURSOR ###
+cursor {
+    inactive_timeout = 2
+}
+
+### INPUT ###
+source = ~/.config/hypr/configs/input.conf
+
+### KEYBINDS ###
+source = ~/.config/hypr/configs/keybinds.conf

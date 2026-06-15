@@ -52,9 +52,7 @@ change_backlight() {
 	fi
 
 	brightnessctl set "${new_brightness}%"
-	get_icon
 	current=$new_brightness
-	notify_user
 }
 
 # Execute accordingly

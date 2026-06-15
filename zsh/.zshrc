@@ -1,3 +1,4 @@
+DISABLE_AUTO_UPDATE="true"
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="jovial"
 
@@ -5,9 +6,9 @@ ZSH_THEME="jovial"
 plugins=(
   git
   zsh-autosuggestions
-  zsh-syntax-highlighting
+  fast-syntax-highlighting
+  # zsh-syntax-highlighting
 )
-
 source $ZSH/oh-my-zsh.sh
 
 # =========================
@@ -55,13 +56,29 @@ alias cat="bat"
 alias enable_bluetooth="sudo systemctl enable bluetooth.service"
 alias enable_cups="sudo systemctl enable cups.service & sudo systemctl enable cups.socket"
 alias enable_avahi="sudo systemctl enable avahi-daemon.service & sudo systemctl enable avahi-daemon.socket"
-alias rm_horphans="sudo pacman -Rs $(pacman -Qtdq)"
+alias rm_horphans="sudo pacman -Rns $(pacman -Qtdq)"
 alias git_ssh_school="git remote set-url origin git@github_school:LupFede/"
 alias git_ssh_work="git remote set-url origin git@github_work:FedeLupianez/"
 alias gs="git status"
 alias gc="git commit -m "
 alias ga="git add "
 
+bindkey '^H' backward-kill-word
+
+openf(){
+    eval "dir=\$echo $PWD"
+    xdg-open "${dir}"
+}
+
+copyfile() {
+    [[ -f "$1" ]] || {
+        echo "archivo no encontrado: $1"
+        return 1
+    }
+
+    wl-copy < "$1"
+    echo "file copied"
+}
 
 # =========================
 # ⚡ Funciones
@@ -71,37 +88,38 @@ alias ga="git add "
 
 function db_ssh(){
     local profile="${1:-dev}"
-    local local_port="${2:-3307}"
+    local tool="${2:-nvim}"
+    local local_port="${3:-3307}"
+
     . ~/.config/db_ssh_config.sh
-    eval "remote_host=\$${profile}_ssh_host"
-    eval "remote_port=\$${profile}_port"
-    eval "ssh_user=\$${profile}_ssh_user"
+    local remote_host=${(P)${:-${profile}_ssh_host}}
+    local remote_port=${(P)${:-${profile}_ssh_port}}
+    local ssh_user=${(P)${:-${profile}_ssh_user}}
+    local ssh_password=${(P)${:-${profile}_ssh_password}}
 
-    eval "db_user=\$${profile}_db_user"
-    eval "db_password=\$${profile}_db_password"
-    eval "db_name=\$${profile}_db_name"
-    eval "db_motor=\$${profile}_db_motor"
-
-    ssh -N "$ssh_user@$remote_host" -L "$local_port:127.0.0.1:$remote_port" &
+    local db_user=${(P)${:-${profile}_db_user}}
+    local db_password=${(P)${:-${profile}_db_password}}
+    local db_name=${(P)${:-${profile}_db_name}}
+    # ssh "$ssh_user@$remote_host"
+    sshpass -p "$ssh_password" ssh -N \
+        -o ExitOnForwardFailure=yes \
+        -L "$local_port:127.0.0.1:$remote_port" \
+        "$ssh_user@$remote_host" &
     local ssh_pid=$!
-    trap "kill $SSH_PID;" EXIT INT TERM
-
-    # local attempts=0
-    # while ! nc -z 127.0.0.1 "$local_port" 2>/dev/null; do
-    #     sleep 0.5
-    #     attempts=$((attempts + 1))
-    #     if [ $attempts -ge 10 ]; then
-    #         echo "Error: tunnel SSH no pudo establecerse en $local_port"
-    #         kill $ssh_pid 2>/dev/null
-    #         return 1
-    #     fi
-    # done
 
     sleep 2
     echo "Tunnel activo en 127.0.0.1:$local_port (pid $ssh_pid)"
-    mycli --host 127.0.0.1 --port "$local_port" --user "$db_user" --pass "$db_password" "$db_name"
+    if [[ $tool == "nvim" ]]; then 
+        nvim -c "DBUI"
+    else
+        mycli --host 127.0.0.1 --port "$local_port" --user "$db_user" --pass "$db_password" "$db_name"
+    fi
 
     kill $ssh_pid 2>/dev/null
     wait $ssh_pid 2>/dev/null
+    trap - EXIT INT TERM
     echo "Tunnel cerrado"
 }
+
+# bun completions
+[ -s "/home/fede/.bun/_bun" ] && source "/home/fede/.bun/_bun"
